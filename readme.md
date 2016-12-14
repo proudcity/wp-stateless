@@ -21,6 +21,9 @@ define( 'WP_STATELESS_MEDIA_BUCKET', 'media.application-domain.com' );
 define( 'WP_STATELESS_MEDIA_MODE', 'cdn' );
 define( 'WP_STATELESS_MEDIA_KEY_FILE_PATH', '/var/www/wp-content/keys/application-name-service-id.p12' );
 define( 'WP_STATELESS_MEDIA_SERVICE_ACCOUNT', '12345689-hash@developer.gserviceaccount.com' );
+define( 'WP_STATELESS_MEDIA_DELETE_REMOTE', 1 );
+define( 'WP_STATELESS_MEDIA_HASH_FILENAME', 1 );
+define( 'WP_STATELESS_MEDIA_REWRITE_BODY_CONTENT_URL', 1 );
 ```
 
 
@@ -46,9 +49,13 @@ wp option update sm_bucket media.site.com
 ### Available Constants
 Setting a setting via constants will prevent ability to make changes in control panel.
 
+* WP_STATELESS_MEDIA_BUCKET - The Google cloud storage bucket to use.
 * WP_STATELESS_MEDIA_MODE - Set to "disabled", "backup" or "cdn" to configure mode. 
 * WP_STATELESS_MEDIA_SERVICE_ACCOUNT - Google email address of service account.
-* WP_STATELESS_MEDIA_KEY_FILE_PATH - Absolute, or relative to web-root, path to P12 file.
+* WP_STATELESS_MEDIA_KEY_FILE_PATH - Absolute, or relative to web-root, path to P12 file.  Note that this can also be a string with the JSON key.
+* WP_STATELESS_MEDIA_DELETE_REMOTE - Delete media from GCS when media is deleted from the site. Defaults to 0.
+* WP_STATELESS_MEDIA_HASH_FILENAME - Randomize the filename of newly uploaded media files. (May help to avoid unwanted GCS caching). Defaults to 0.
+* WP_STATELESS_MEDIA_REWRITE_BODY_CONTENT_URL - Body content media URL rewrite. Defaults to 0.
 
 ### Response Headers
 

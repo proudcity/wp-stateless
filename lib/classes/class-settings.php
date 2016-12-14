@@ -106,6 +106,18 @@ namespace wpCloud\StatelessMedia {
           $this->set( 'sm.hashify_file_name', WP_STATELESS_MEDIA_HASH_FILENAME );
         }
 
+        /**
+         * BODY CONTENT URL REWRITE
+         */
+
+        $body_rewrite = get_site_option( 'sm_body_rewrite', '0' );
+        if( $body_rewrite && $body_rewrite == '1' ) {
+          $this->set( 'sm.body_rewrite', 'true' );
+        }
+        if( defined( 'WP_STATELESS_MEDIA_REWRITE_BODY_CONTENT_URL' ) ) {
+          $this->set( 'sm.body_rewrite', WP_STATELESS_MEDIA_REWRITE_BODY_CONTENT_URL );
+        }
+
         /* Set default cacheControl in case it is empty */
         $cache_control = trim( $this->get( 'sm.cache_control' ) );
         if ( empty( $cache_control ) ) {
